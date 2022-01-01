@@ -3,14 +3,13 @@ import Message from '../components/Message.vue'
 
 const routes = [
   {
-    path: '/2022',
+    path: '/2022/',
     name: 'Home',
     component: Message
-  }
+  },
 ]
 
 export default createRouter({
   history: createWebHistory(),
-  base: '/',
   routes: routes
 })

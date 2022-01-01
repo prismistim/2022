@@ -1,7 +1,3 @@
-<script setup>
-import Message from './components/Message.vue'
-</script>
-
 <template>
   <h3>A Happy New Year!</h3>
   <router-view></router-view>

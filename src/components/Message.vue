@@ -9,9 +9,13 @@ const message = ref('あけおめ')
 console.log(route.query.id)
 
 const loadMessage = (target) => {
-  message.value = messages.items.find((item) => {
+  const result = messages.items.find((item) => {
     return item.id === target
-  }).description
+  })
+
+  if (result) {
+    message.value = result.description
+  }
 }
 
 if (route.query.id) {
