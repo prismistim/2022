@@ -3,7 +3,7 @@ import Message from '../components/Message.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/2022',
     name: 'Home',
     component: Message
   }
@@ -11,5 +11,6 @@ const routes = [
 
 export default createRouter({
   history: createWebHistory(),
+  base: '/',
   routes: routes
 })
