@@ -17,6 +17,6 @@ body {
 h3 {
   font-size: 1.4rem;
   text-align: center;
-  color: #98a112
+  color: rgb(200, 180, 100)
 }
 </style>
