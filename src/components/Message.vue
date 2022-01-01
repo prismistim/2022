@@ -27,8 +27,9 @@ if (route.query.id) {
   <p>{{ message }}</p>
 </template>
 
-<style>
+<style scoped>
 p {
-  text-align: center
+  text-align: center;
+  font-size: 1.2rem;
 }
 </style>
