@@ -16,10 +16,7 @@ setup = () => {
   if (typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
     DeviceOrientationEvent.requestPermission()
       .catch(() => {
-        let button = createButton("click to allow access to sensors")
-        button.style("font-size", "24px")
-        button.center()
-        button.mousePressed( requestAccess )
+        requestAccess()
         throw error
       })
       .then(() => {
