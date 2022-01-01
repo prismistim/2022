@@ -4,7 +4,7 @@ let size = 100
 let permissionGranted = false
 
 preload = () => {
-  font = loadFont('./src/assets/MuseoModerno-ExtraLight.ttf')
+  font = loadFont('/2022/MuseoModerno-ExtraLight.ttf')
 }
 
 setup = () => {
