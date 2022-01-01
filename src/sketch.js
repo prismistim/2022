@@ -1,6 +1,8 @@
 let font
 let size = 100
 
+let permissionGranted = false
+
 preload = () => {
   font = loadFont('./src/assets/MuseoModerno-ExtraLight.ttf')
 }
@@ -10,9 +12,29 @@ setup = () => {
   textFont(font)
   textSize(size)
   textAlign(CENTER, CENTER)
+
+  if (typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
+    DeviceOrientationEvent.requestPermission()
+      .catch(() => {
+        let button = createButton("click to allow access to sensors")
+        button.style("font-size", "24px")
+        button.center()
+        button.mousePressed( requestAccess )
+        throw error
+      })
+      .then(() => {
+        permissionGranted = true
+      })
+  } else {
+    permissionGranted = true
+  }
 }
 
 draw = () => {
+  if (!permissionGranted) {
+    return
+  }
+
   background(255)
   fill(200, 180, 100)
   textSize(size)
@@ -31,3 +53,18 @@ deviceShaken = () => {
 windowResized = () => {
   resizeCanvas(windowWidth, 300)
 }
+
+requestAccess = () => {
+  DeviceOrientationEvent.requestPermission()
+    .then(response => {
+      if (response == 'granted') {
+        permissionGranted = true;
+      } else {
+        permissionGranted = false;
+      }
+    })
+  .catch(console.error);
+  
+  this.remove();
+}
+
