@@ -6,19 +6,25 @@ import messages from '../assets/message.json'
 const route = useRoute()
 const message = ref('あけおめ')
 
-onMounted(() => {
-  if (route.params.id) {
-    loadMessage(route.params.id)
-  }
-})
+console.log(route.query.id)
 
 const loadMessage = (target) => {
-  message.value = messages.find((item) => {
+  message.value = messages.items.find((item) => {
     return item.id === target
-  })
+  }).description
+}
+
+if (route.query.id) {
+  loadMessage(route.query.id)
 }
 </script>
 
 <template>
   <p>{{ message }}</p>
 </template>
+
+<style>
+p {
+  text-align: center
+}
+</style>
